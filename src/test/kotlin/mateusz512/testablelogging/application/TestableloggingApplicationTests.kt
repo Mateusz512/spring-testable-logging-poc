@@ -1,4 +1,4 @@
-package mateusz512.testablelogging
+package mateusz512.testablelogging.application
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
