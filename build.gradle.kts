@@ -21,6 +21,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.strikt:strikt-core:0.34.0")
+	testImplementation("com.tngtech.archunit:archunit-junit5:0.23.1")
 }
 
 tasks.withType<KotlinCompile> {
