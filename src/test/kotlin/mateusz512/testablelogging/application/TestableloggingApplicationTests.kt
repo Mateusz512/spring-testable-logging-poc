@@ -54,6 +54,6 @@ class TestableloggingApplicationTests {
     }
 
     private val domainEvents
-        get() = events.stream(SpringEvents.DomainEvent::class.java).map { it.event }.toList()
+        get() = events.stream(DomainEvent::class.java).map { it.event }.toList()
 
 }

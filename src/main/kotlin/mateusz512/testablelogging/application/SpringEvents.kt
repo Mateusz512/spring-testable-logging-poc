@@ -2,7 +2,6 @@ package mateusz512.testablelogging.application
 
 import mateusz512.testablelogging.domain.Event
 import mateusz512.testablelogging.domain.Events
-import org.springframework.context.ApplicationEvent
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.context.ApplicationEventPublisherAware
 import org.springframework.context.event.EventListener
@@ -11,6 +10,8 @@ import java.time.Clock
 
 @Component
 class SpringEvents(private val clock: Clock) : Events, ApplicationEventPublisherAware {
+
+    private val printer: DomainEventConsumer = Printer(System.out)
 
     private lateinit var applicationEventPublisher: ApplicationEventPublisher
 
@@ -24,9 +25,7 @@ class SpringEvents(private val clock: Clock) : Events, ApplicationEventPublisher
 
     @EventListener
     fun consumeDomainEvent(domainEvent: DomainEvent) {
-        println(domainEvent.event)
+        printer(domainEvent)
     }
-
-    class DomainEvent(val event: Event, clock: Clock) : ApplicationEvent(event, clock)
 
 }
