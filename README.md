@@ -65,12 +65,7 @@ events(someEvent)
 ## The Spring bits
 
 Spring has a concept
-of [ApplicationEvent](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ApplicationEvent.html)
-. It can be passed around in Spring context and
-even [captured in tests](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/context/event/RecordApplicationEvents.html#:~:text=%40RecordApplicationEvents%20is%20a%20class%2Dlevel,ApplicationEvents%20API%20within%20your%20tests.)!
-It even has a concept of passing a `Clock` to it! (FOR THE LOVE OF GOD. `Instant.now()` without a `Clock` should be
-prohibited...). But that's not very convenient to use every time you want to make an event. Also: the `source` is
-extremely generic (it's an `Object), So we should wrap it somehow.
+of [ApplicationEvent](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ApplicationEvent.html). It can be passed around in Spring context and even [captured in tests](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/context/event/RecordApplicationEvents.html#:~:text=%40RecordApplicationEvents%20is%20a%20class%2Dlevel,ApplicationEvents%20API%20within%20your%20tests.)! It even has a concept of passing a `Clock` to it! (FOR THE LOVE OF GOD. `Instant.now()` without a `Clock` should be prohibited...). But that's not very convenient to use every time you want to make an event. Also: the `source` is extremely generic (it's an `Object`), So we should wrap it somehow.
 
 ```kotlin
 class DomainEvent(val event: Event, clock: Clock) : ApplicationEvent(event, clock)
